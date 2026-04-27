@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
-import numpy as np
+from feature_enggineer import feature_engineering
+import pandas as pd
 
 # 1. buat API
 app = FastAPI()
@@ -21,33 +22,17 @@ class InputData(BaseModel):
     stress_level: float
     part_time_job: int
     health_score: float
-    study_sleep_ratio: float
-    attendance_study_interaction: float
 
 # 4. endpoint home
 @app.get("/")
 def home():
-    return {"message": "API running!"}
+    return {"message": "================ API RUNNING ==================!"}
 
 # 5. endpoint prediksi
 @app.post("/predict")
 def predict(data: InputData):
+    df = pd.DataFrame([data.dict()])
 
-    features = np.array([[
-        data.study_hours,
-        data.attendance,
-        data.sleep_hours,
-        data.previous_score,
-        data.assignment_score,
-        data.internet_usage,
-        data.parent_education,
-        data.stress_level,
-        data.part_time_job,
-        data.health_score,
-        data.study_sleep_ratio,
-        data.attendance_study_interaction
-    ]])
-
-    prediction = model.predict(features)
+    prediction = model.predict(df)
 
     return {"prediction": int(prediction[0])}
