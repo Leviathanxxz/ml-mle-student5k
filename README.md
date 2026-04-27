@@ -1,175 +1,89 @@
-# 🎓 Student Pass Prediction API
+# Student Performance Prediction (End-to-End ML Project)
 
-## 📌 Project Overview
+## Overview
 
-This project is a **Machine Learning API** built using **FastAPI** to predict whether a student will pass or fail based on academic and lifestyle factors.
+This project is an end-to-end Machine Learning system to predict whether a student will pass or fail based on behavioral and academic features.
 
-The model is trained using real-world-like data and deployed using **Docker**, making it portable and production-ready.
+The system is deployed as a full-stack AI application:
 
----
-
-## 🚀 Tech Stack
-
-* **Python**
-* **FastAPI**
-* **Scikit-learn**
-* **Pandas & NumPy**
-* **Docker**
-* **Uvicorn**
+* Backend API using FastAPI
+* Model served via Docker
+* Deployment on Railway
+* Frontend interface built with Streamlit
 
 ---
 
-## 📊 Features
+## Live Demo
+
+* Frontend: https://ml-mle-student5k-75cubcenx37phqmsfxwwx8.streamlit.app/
+* API: https://ml-mle-student5k-production.up.railway.app/docs
+
+---
+
+## Problem Statement
+
+Educational institutions need early prediction systems to identify students at risk of failing, allowing timely intervention.
+
+---
+
+## Features
 
 * Predict student pass/fail outcome
-* REST API with FastAPI
-* Model trained with supervised learning
-* Dockerized for easy deployment
-* Ready for cloud deployment (Railway)
+* Probability-based risk scoring
+* Interactive UI for user input
+* Prediction history tracking
+* Data visualization (trend analysis)
 
 ---
 
-## 📁 Project Structure
+## Tech Stack
 
-```
-ml-mle-students5k-rows/
-│
-├── app.py              # FastAPI application
-├── model.joblib        # Trained ML model
-├── requirements.txt    # Dependencies
-├── Dockerfile          # Docker configuration
-└── README.md           # Project documentation
-```
-
----
-
-## ▶️ How to Run (Local)
-
-### 1. Clone Repository
-
-```bash
-git clone https://github.com/Leviathanxxz/ml-mle-student5k.git
-cd ml-mle-student5k
-```
-
-### 2. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Run API
-
-```bash
-uvicorn app:app --reload
-```
-
-### 4. Open in Browser
-
-```
-http://localhost:8000/docs
-```
-
----
-
-## 🐳 Run with Docker
-
-### Build Image
-
-```bash
-docker build -t ml-api .
-```
-
-### Run Container
-
-```bash
-docker run -p 8000:8000 ml-api
-```
-
-### Access API
-
-```
-http://localhost:8000/docs
-```
-
----
-
-## 🌐 API Endpoints
-
-### 🔹 GET `/`
-
-Check API status
-
-### 🔹 POST `/predict`
-
-Predict student result
-
----
-
-## 📥 Example Request
-
-```json
-{
-  "study_hours": 6,
-  "attendance": 80,
-  "sleep_hours": 7,
-  "previous_score": 75,
-  "assignment_score": 85,
-  "internet_usage": 5,
-  "parent_education": 3,
-  "stress_level": 4,
-  "part_time_job": 0,
-  "health_score": 70
-}
-```
-
----
-
-## 📤 Example Response
-
-```json
-{
-  "prediction": 1
-}
-```
-
-**Note:**
-
-* `1` = Pass
-* `0` = Fail
-
----
-
-## 🧠 Machine Learning Details
-
-* Model: Logistic Regression / Pipeline
-* Scaling: StandardScaler
-* Hyperparameter tuning: RandomizedSearchCV
-* Dataset: 5000 rows (simulated real-world student data)
-
----
-
-## ☁️ Deployment
-
-This project is ready to be deployed using:
-
+* Python
+* Scikit-learn
+* FastAPI
+* Docker
 * Railway
-* Render
-* Docker-based platforms
+* Streamlit
 
 ---
 
-## 📌 Author
+## Machine Learning Pipeline
 
-Developed as part of a Machine Learning Engineering learning project.
+1. Data Cleaning
+2. Feature Engineering:
+
+   * Study/Sleep ratio
+   * Attendance × Study interaction
+3. Train/Test Split
+4. Model Training (Logistic Regression + Hyperparameter tuning)
+5. Model Evaluation
+6. Model Deployment
 
 ---
 
-## ⭐ Notes
+## How to Run Locally
 
-This project demonstrates:
+### Backend
 
-* End-to-end ML pipeline
-* API development
-* Docker containerization
-* Real-world deployment workflow
+pip install -r requirements.txt
+uvicorn app:app --reload
+
+### Frontend
+
+streamlit run app_streamlit.py
+
+---
+
+## Key Highlights
+
+* Built complete ML pipeline from scratch
+* Deployed real API for prediction
+* Integrated frontend and backend
+* Applied feature engineering and model tuning
+* Implemented user interaction and analytics
+
+---
+
+## Author
+
+Agung Hidayat
